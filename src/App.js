@@ -1,16 +1,28 @@
 import {React , useState , useEffect} from 'react'
 import {
   MenuItem,
-  FormControl,
-  Select
+  FormControl, Select, Card, CardContent,
 } from "@material-ui/core";
 import './App.css';
-import Infobox from './Infobox'
+import Infobox from './Infobox';
+import Map from './Map'
+import Table from './Table'
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [country , setCountry] = useState('worldwide');
-  const value = "Albania"
+  const [countryInfo, setCountryInfo] = useState({})
+  const [tableData , setTableData] = useState([]);
+  //set initial state for worldwide results when app loads!
+  useEffect(() => {
+    fetch("https://disease.sh/v3/covid-19/all")
+    .then(response => response.json())
+    .then(data => {
+      setCountryInfo(data)
+      countryInfo.country = "worldide"
+    })
+
+  },[])
 
   // api calls to get data - https://disease.sh/vs/covid-19/countries
   // then use a useEffect function to call that data once when app loads or country variable changes
@@ -25,6 +37,7 @@ function App() {
           { name : country.country,
           value: country.countryInfo.iso2}
         ));
+         setTableData(data)
          setCountries(countries)}
         )
   
@@ -33,16 +46,27 @@ function App() {
   }, []);
   const countryChange = async (event) => {
     const countryCode = event.target.value;
-    console.log(countryCode);
-    setCountry(countryCode)
+    const url = countryCode === "worldwide" ? "https://disease.sh/v3/covid-19/all" : 
+    `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+    console.log(url);
+    await fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      setCountry(countryCode)
+      setCountryInfo(data);
+    })
   }
+  console.log('This is the New Country Info' , countryInfo)
 
   return (
 
     <div className="App">
+      <div className="left__container">
       <div className="app__header">
-        <h1>this it awesome</h1>
+        <h1>Covid-19 Live Tracker</h1>
+        
         <FormControl className="app_dropdown">
+          
           <Select variant= "outlined" value={country} onChange={countryChange}>
               <MenuItem value="worldwide">Worldwide</MenuItem>
               {/* map through coutry list and display a drop down component */}
@@ -61,18 +85,38 @@ function App() {
         </FormControl>
         
       </div>
+      <div className="display__header">
+      <h4>Showing result for {countryInfo.country}</h4>
+      </div>
       <div className="app__stats">
-               <Infobox/>
+              
+               <Infobox title="Coronavirus Cases" total= {countryInfo.cases} cases={countryInfo.todayCases}/>
+               <Infobox title= "Recovered" total={countryInfo.recovered} cases={countryInfo.todayRecovered}/>
+               <Infobox title = "Deaths" cases={countryInfo.todayDeaths} total={countryInfo.deaths}/>
                 {/* info box */}
                 {/* info box */}
                 {/* info box */}
       </div>
+      
 
 
-      {/* table */}
-      {/* grap */}
-      {/* map */}
+      
+      <Map/>
     </div>
+    <Card className="right__container">
+      <CardContent>
+              <h3>Live Cases by Country</h3>
+              {/* table */}
+              <Table countries= {tableData}/>
+              <h3>Worldwide New Cases</h3>
+              {/* graph */}
+              
+      </CardContent>
+    </Card>
+
+    </div>
+    
+      
   );
             }
 

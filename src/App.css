@@ -1,10 +1,42 @@
 *{
   margin: 0;
 }
+body{
+  background-color:darkorange;
+  color:white;
+}
+.App{
+  display:flex;
+  justify-content: space-evenly;
+  padding:20px;
+
+}
 .app__header {
   display:flex;
   flex-direction:row;
   align-items:center;
   justify-content:space-between;
   margin-bottom: 10px;
+}
+.app__stats {
+  display:flex;
+  flex-direction: row;
+  justify-content:space-between;
+  max-width: 100%;
+  
+}
+
+.left__container{
+  flex:0.9;
+  
+}
+.display__header{
+  margin-bottom:20px;
+  font-size: 20px;
+  color:black;
+}
+@media (max-width: 700px){
+  .App{
+    flex-direction: column;
+  }
 }
