@@ -7,6 +7,8 @@ import './App.css';
 import Infobox from './Infobox';
 import Map from './Map'
 import Table from './Table'
+import { sortData } from './utilities'
+import Linegraph from './Linegraph.js'
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -37,7 +39,8 @@ function App() {
           { name : country.country,
           value: country.countryInfo.iso2}
         ));
-         setTableData(data)
+        const sortedData = sortData(data);
+         setTableData(sortedData)
          setCountries(countries)}
         )
   
@@ -56,7 +59,6 @@ function App() {
       setCountryInfo(data);
     })
   }
-  console.log('This is the New Country Info' , countryInfo)
 
   return (
 
@@ -109,6 +111,7 @@ function App() {
               {/* table */}
               <Table countries= {tableData}/>
               <h3>Worldwide New Cases</h3>
+              <Linegraph/>
               {/* graph */}
               
       </CardContent>

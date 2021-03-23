@@ -1,4 +1,6 @@
 import React from 'react'
+import './Table.css';
+import {Card, CardContent} from "@material-ui/core"
 
 function Table({ countries }) {
     return (
@@ -9,6 +11,7 @@ function Table({ countries }) {
                     <td><strong>{cases}</strong></td>
                 </tr>
             ))}
+
             
         </div>
     )
