@@ -9,6 +9,7 @@ body{
   display:flex;
   justify-content: space-evenly;
   padding:20px;
+  height: 100vh;
 
 }
 .app__header {
@@ -27,8 +28,14 @@ body{
 }
 
 .left__container{
-  flex:0.9;
-  
+  flex:0.9; 
+}
+.right__container{
+  padding:10px;
+  height:calc(100vh - 20px);
+}
+.right__container .Line {
+  height:100px;
 }
 .display__header{
   display:flex;
@@ -44,6 +51,9 @@ body{
   border-top-right-radius:10px;
   border-left: solid rgb(189, 16, 16) 4px;
   border-right: solid rgb(189, 16, 16) 4px;
+}
+.world{
+  padding-bottom: 15px;
 }
 @media (max-width: 700px){
   .App{

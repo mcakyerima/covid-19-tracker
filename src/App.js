@@ -7,8 +7,8 @@ import './App.css';
 import Infobox from './Infobox';
 import Map from './Map'
 import Table from './Table'
-import { sortData } from './utilities'
-import Linegraph from './Linegraph.js'
+import { sortData } from './utilities';
+import Linegraph from './Linegraph.js';
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -65,7 +65,7 @@ function App() {
     <div className="App">
       <div className="left__container">
       <div className="app__header">
-        <h1>Covid-19 Live Tracker</h1>
+        <h1>Covid-19 Live Tracker by Mc Fresh</h1>
         
         <FormControl className="app_dropdown">
           
@@ -110,7 +110,8 @@ function App() {
               <h3>Live Cases by Country</h3>
               {/* table */}
               <Table countries= {tableData}/>
-              <h3>Worldwide New Cases</h3>
+              <h3 className='world'>Worldwide New Cases</h3>
+
               <Linegraph/>
               {/* graph */}
               
@@ -121,6 +122,6 @@ function App() {
     
       
   );
-            }
+}
 
 export default App;
