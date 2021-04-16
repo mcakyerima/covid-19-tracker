@@ -10,6 +10,7 @@ body{
   justify-content: space-evenly;
   padding:20px;
   height: 100vh;
+  
 
 }
 .app__header {
@@ -32,7 +33,6 @@ body{
 }
 .right__container{
   padding:10px;
-  height:calc(100vh - 20px);
 }
 .right__container .Line {
   height:100px;
@@ -58,5 +58,7 @@ body{
 @media (max-width: 700px){
   .App{
     flex-direction: column;
+
   }
+
 }
