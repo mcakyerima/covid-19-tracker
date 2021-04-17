@@ -3,7 +3,8 @@ import './Map.css'
 import { MapContainer ,TileLayer } from "react-leaflet";
 
 
-function Map({center , zoom}) {
+function Map({ countries , center , zoom}) {
+    console.log('this is countries ' , countries)
     return (
         <div className="map">
             <MapContainer center={center} zoom={zoom}>

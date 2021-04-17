@@ -6,6 +6,7 @@
     margin-top: 16px;
     box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
     margin-bottom: 15px;
+    padding-bottom: 20px;
 }
 .map .leaflet-container {
     height:100%;

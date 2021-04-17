@@ -16,8 +16,12 @@ function App() {
   const [country , setCountry] = useState('worldwide');
   const [countryInfo, setCountryInfo] = useState({})
   const [tableData , setTableData] = useState([]);
+  //Map center State determined the center of the map by default which i gave the coordinate of the center of the pecific ocean by default.
   const [mapCenter, setMapCenter] = useState({lat:34.80746 , lng: 40.4796});
+  //mapZoom state specifies how far the map should zoom by default..whick we give 3
   const [mapZoom, setMapZoom] =useState(3);
+  // collect the countries data and save it on the mapCountries state
+  const [mapCountries , setMapCountries] = useState([])
   //set initial state for worldwide results when app loads!
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
@@ -44,6 +48,7 @@ function App() {
         ));
         const sortedData = sortData(data);
          setTableData(sortedData)
+         setMapCountries(data)
          setCountries(countries)}
         )
   
@@ -58,8 +63,12 @@ function App() {
     await fetch(url)
     .then(response => response.json())
     .then(data => {
-      setCountry(countryCode)
+      setCountry(countryCode);
       setCountryInfo(data);
+      setMapCenter([data.countryInfo.lat , data.countryInfo.long])
+      setMapZoom(4)
+      console.log( 'boom' , mapCenter)
+      
     })
   }
 
@@ -103,8 +112,12 @@ function App() {
                 {/* info box */}
       </div> 
       <Map
+      //passing the center and zoom as props to the map component
        center={mapCenter}
-       zoom = {mapZoom}/>
+       zoom = {mapZoom}
+       //accepting the countries prop and getting retrieving data from countries data
+       countries = {mapCountries}/>
+       
     </div>
     <Card className="right__container">
       <CardContent>
