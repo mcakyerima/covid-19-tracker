@@ -4,6 +4,7 @@
 body{
   background-color:rgb(164, 202, 199);
   color:white;
+  paddint:10px;
 }
 .App{
   display:flex;
@@ -31,6 +32,7 @@ body{
 
 .left__container{
   flex:0.9; 
+  max-height: 80vh;
 }
 .right__container{
   padding:10px;
@@ -55,12 +57,37 @@ body{
   border-right: solid rgb(189, 16, 16) 4px;
 }
 .world{
-  padding-bottom: 15px;
+  padding: 20px;
+  height: 10px;
+  margin-bottom: 20px;
+}
+.world > span {
+  color: rgb(189, 16, 16);
+  font-weight: 700;
+  font-size: 30px;
 }
 @media (max-width: 700px){
   .App{
-    flex-direction: column;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
 
+  }
+  .left__container{
+    flex:0.9; 
+    max-height: 50vh;
+    margin-bottom: 30px;
+  }
+  .right__container{
+    width: 90%;
+    padding: 20px;
+    margin-top: 350px;
+    height:100vh
+  }
+  body{
+    height: 100%;
   }
 
 }

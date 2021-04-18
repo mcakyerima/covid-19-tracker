@@ -22,6 +22,7 @@ function App() {
   const [mapZoom, setMapZoom] =useState(3);
   // collect the countries data and save it on the mapCountries state
   const [mapCountries , setMapCountries] = useState([])
+  const [result , setResult ] = useState('Worldwide')
   //set initial state for worldwide results when app loads!
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
@@ -59,6 +60,7 @@ function App() {
     const countryCode = event.target.value;
     const url = countryCode === "worldwide" ? "https://disease.sh/v3/covid-19/all" : 
     `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+    setResult(countryCode);
     console.log(url);
     await fetch(url)
     .then(response => response.json())
@@ -100,7 +102,7 @@ function App() {
         
       </div>
       <div className="display__header">
-      <h4>Showing result for {countryInfo.country}</h4>
+      <h4>Showing result for {result}</h4>
       </div>
       <div className="app__stats">
               
@@ -124,7 +126,7 @@ function App() {
               <h3>Live Cases by Country</h3>
               {/* table */}
               <Table countries= {tableData}/>
-              <h3 className='world'>Worldwide New Cases</h3>
+              <h3 className='world'><span>|</span> Worldwide New Cases</h3>
 
               <Linegraph/>
               {/* graph */}
