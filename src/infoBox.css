@@ -1,0 +1,25 @@
+.infobox {
+    flex: 1;
+}
+.infobox:not(:last-child) {
+    margin-right: 20px;
+}
+
+/* .MuiTypography-root{
+    color:red  !important;
+} */
+/* .MuiCardContent-root h3 {
+    color: blue;
+} */
+.cases{
+    color:#cc1034;
+    font-weight:600;
+    font-size:1.75rem;
+    margin-bottom: 0.5rem;
+}
+.total{
+    color:#6c757d;
+    font-weight:700;
+    font-size: 0.8rem;
+    margin-top: 15px;
+}

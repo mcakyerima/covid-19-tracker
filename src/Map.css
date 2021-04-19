@@ -8,6 +8,38 @@
     margin-bottom: 15px;
     padding-bottom: 20px;
 }
+
+
+.popup-flag {
+    height: 100px;
+    width: 100%;
+    background-size: cover;
+    border-radius: 8px;
+    border:gray solid 1px;
+   
+}
+
+.info-name{
+    font-size: 20px;
+    font-weight: bold;
+    color: #555;
+    margin-top:4px;
+}
+
+.info-cases,
+.info-recorved,
+.info-deaths {
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.popup-container{
+     width:150px;
+}
+Popup{
+    width:200px;
+}
+
 .map .leaflet-container {
     height:100%;
 }

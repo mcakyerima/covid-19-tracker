@@ -10,6 +10,7 @@ import Table from './Table'
 import { sortData } from './utilities';
 import Linegraph from './Linegraph.js';
 import "leaflet/dist/leaflet.css";
+import './infoBox.css'
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -79,7 +80,7 @@ function App() {
     <div className="App">
       <div className="left__container">
       <div className="app__header">
-        <h1>Covid-19 Live Tracker by Mc Fresh</h1>
+        <h1>Covid-19 Live Tracker by Mc Ak Yerima</h1>
         
         <FormControl className="app_dropdown">
           
@@ -106,7 +107,7 @@ function App() {
       </div>
       <div className="app__stats">
               
-               <Infobox title="Coronavirus Cases" total= {countryInfo.cases} cases={countryInfo.todayCases}/>
+               <Infobox  title="Coronavirus Cases" total= {countryInfo.cases} cases={countryInfo.todayCases}/>
                <Infobox title= "Recovered" total={countryInfo.recovered} cases={countryInfo.todayRecovered}/>
                <Infobox title = "Deaths" cases={countryInfo.todayDeaths} total={countryInfo.deaths}/>
                 {/* info box */}
