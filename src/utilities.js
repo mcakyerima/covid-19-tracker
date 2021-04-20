@@ -12,23 +12,27 @@ const casesTypeColors = {
         hex : '#CC1034',
         multiplier: 400
     },
-    recorvered : {
-        hex : '#7dd71d',
-        multiplier : 400,
+    recovered : {
+        multiplier : 500,
+        hex : '#0ee627',
     },
     deaths : {
         hex: '#fb4443',
         multiplier : 400,
-    }
-}
+    },
+} ;
+//writing a helper function to format cases result ti display like this +200.3k +20k or display +0 if no value exist
+export const formater = (stat) =>
+    stat ? `+${numeral(stat).format("0.0a")}` : "+0a"
 
 //Draw circles on the map with this interactive toooltop function
-export const showDataOnMap = (data , casesType = 'cases') =>
+export const showDataOnMap = (data , casesType) =>
     data.map((country) => (
         <Circle
         center = {[country.countryInfo.lat, country.countryInfo.long]}
         fillOpacity = {0.4}
-        color = {casesTypeColors[casesType].hex}
+        color={casesTypeColors[casesType].hex}
+        fillColor={casesTypeColors[casesType].hex}
         radius = {
             Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier
         }>

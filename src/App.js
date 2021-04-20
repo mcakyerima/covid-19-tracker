@@ -7,7 +7,7 @@ import './App.css';
 import Infobox from './Infobox';
 import Map from './Map'
 import Table from './Table'
-import { sortData } from './utilities';
+import { sortData , formater} from './utilities';
 import Linegraph from './Linegraph.js';
 import "leaflet/dist/leaflet.css";
 import './infoBox.css'
@@ -24,6 +24,8 @@ function App() {
   // collect the countries data and save it on the mapCountries state
   const [mapCountries , setMapCountries] = useState([])
   const [result , setResult ] = useState('Worldwide')
+  //write a state for keeping track of cases typeof
+  const [casesType , setCasesType] = useState('cases')
   //set initial state for worldwide results when app loads!
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
@@ -107,14 +109,19 @@ function App() {
       </div>
       <div className="app__stats">
               
-               <Infobox  title="Coronavirus Cases" total= {countryInfo.cases} cases={countryInfo.todayCases}/>
-               <Infobox title= "Recovered" total={countryInfo.recovered} cases={countryInfo.todayRecovered}/>
-               <Infobox title = "Deaths" cases={countryInfo.todayDeaths} total={countryInfo.deaths}/>
+               <Infobox
+               onClick={(e) => setCasesType('cases')}  title="Coronavirus Cases" total= {formater(countryInfo.cases)} cases={formater(countryInfo.todayCases)}/>
+               <Infobox
+               onClick={(e) => setCasesType('recovered')} title= "Recovered" total={formater(countryInfo.recovered)} cases={formater(countryInfo.todayRecovered)}/>
+               <Infobox 
+               onClick={(e) => setCasesType('deaths')} title = "Deaths" cases={formater(countryInfo.todayDeaths)} total={formater(countryInfo.deaths)}/>
                 {/* info box */}
                 {/* info box */}
                 {/* info box */}
       </div> 
       <Map
+      //pass cases tupe hook
+      casesType={casesType}
       //passing the center and zoom as props to the map component
        center={mapCenter}
        zoom = {mapZoom}
