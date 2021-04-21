@@ -54,18 +54,18 @@ legend: {
         ]    }
 };
 
-const buildChartData = (data , caseType) => {
+const buildChartData = (data , casesType) => {
     const chartData = [];
     let lastDataPoint;
     for (let date in data.cases){
         if (lastDataPoint) {
             const newDataPoint  = {
                 x: date,
-                y:data[caseType][date] - lastDataPoint
+                y:data[casesType][date] - lastDataPoint
             }
             chartData.push(newDataPoint);
         }
-        lastDataPoint = data[caseType][date];
+        lastDataPoint = data[casesType][date];
     }
     return chartData;
 };

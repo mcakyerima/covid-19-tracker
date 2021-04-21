@@ -134,9 +134,9 @@ function App() {
               <h3>Live Cases by Country</h3>
               {/* table */}
               <Table countries= {tableData}/>
-              <h3 className='world'><span>|</span> Worldwide New Cases</h3>
+              <h3 className='world'><span>|</span> Worldwide New { casesType }</h3>
 
-              <Linegraph/>
+              <Linegraph casesType = {casesType}/>
               {/* graph */}
               
       </CardContent>
