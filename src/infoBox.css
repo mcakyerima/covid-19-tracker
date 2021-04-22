@@ -4,6 +4,9 @@
 .infobox:not(:last-child) {
     margin-right: 20px;
 }
+.infoBox-selected{
+    
+}
 
 /* .MuiTypography-root{
     color:red  !important;

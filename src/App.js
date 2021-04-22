@@ -110,10 +110,13 @@ function App() {
       <div className="app__stats">
               
                <Infobox
+               acrtive = {casesType ===[ "cases"]}
                onClick={(e) => setCasesType('cases')}  title="Coronavirus Cases" total= {formater(countryInfo.cases)} cases={formater(countryInfo.todayCases)}/>
                <Infobox
+               acrtive = {casesType ===[ "recovered"]}
                onClick={(e) => setCasesType('recovered')} title= "Recovered" total={formater(countryInfo.recovered)} cases={formater(countryInfo.todayRecovered)}/>
                <Infobox 
+               acrtive = {casesType ===[ "deaths"]}
                onClick={(e) => setCasesType('deaths')} title = "Deaths" cases={formater(countryInfo.todayDeaths)} total={formater(countryInfo.deaths)}/>
                 {/* info box */}
                 {/* info box */}
