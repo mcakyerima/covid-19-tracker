@@ -59,10 +59,12 @@ function App() {
     }
     getCoutriesData()
   }, []);
+
   const countryChange = async (event) => {
     const countryCode = event.target.value;
     const url = countryCode === "worldwide" ? "https://disease.sh/v3/covid-19/all" : 
     `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+         // pass the current countries selected to  result state
     setResult(countryCode);
     console.log(url);
     await fetch(url)
@@ -74,7 +76,7 @@ function App() {
       setMapZoom(4)
       console.log( 'boom' , mapCenter)
       
-    })
+    })                                                                 
   }
 
   return (
@@ -110,20 +112,22 @@ function App() {
       <div className="app__stats">
               
                <Infobox
-               acrtive = {casesType ===[ "cases"]}
+               itIsRed
+               active = {casesType === "cases"}
                onClick={(e) => setCasesType('cases')}  title="Coronavirus Cases" total= {formater(countryInfo.cases)} cases={formater(countryInfo.todayCases)}/>
                <Infobox
-               acrtive = {casesType ===[ "recovered"]}
+               active = {casesType === "recovered"}
                onClick={(e) => setCasesType('recovered')} title= "Recovered" total={formater(countryInfo.recovered)} cases={formater(countryInfo.todayRecovered)}/>
                <Infobox 
-               acrtive = {casesType ===[ "deaths"]}
+               itIsRed
+               active = {casesType === "deaths"}
                onClick={(e) => setCasesType('deaths')} title = "Deaths" cases={formater(countryInfo.todayDeaths)} total={formater(countryInfo.deaths)}/>
                 {/* info box */}
                 {/* info box */}
                 {/* info box */}
       </div> 
       <Map
-      //pass cases tupe hook
+      //pass cases type hook
       casesType={casesType}
       //passing the center and zoom as props to the map component
        center={mapCenter}
@@ -138,9 +142,10 @@ function App() {
               {/* table */}
               <Table countries= {tableData}/>
               <h3 className='world'><span>|</span> Worldwide New { casesType }</h3>
-
-              <Linegraph casesType = {casesType}/>
-              {/* graph */}
+                {/* graph  component*/}
+                {/* //passign cases type data to Line-graph component */}
+              <Linegraph  className='graph--content'casesType={casesType}/>
+              
               
       </CardContent>
     </Card>

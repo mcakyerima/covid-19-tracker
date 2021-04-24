@@ -1,19 +1,28 @@
 .infobox {
     flex: 1;
-}
-.infobox:not(:last-child) {
-    margin-right: 20px;
-}
-.infoBox-selected{
+    cursor: pointer;
     
 }
+.infobox:not(:last-child) {
+    margin-right: 10px;
+}
 
+.infoBox--selected{
+    border-top: 10px solid greenyellow;  
+}
+.infoBox--Red{
+    border-color: red;
+}
 /* .MuiTypography-root{
     color:red  !important;
 } */
 /* .MuiCardContent-root h3 {
     color: blue;
 } */
+
+.title--green{
+    color: greenyellow !important;
+}
 .cases{
     color:#cc1034;
     font-weight:600;

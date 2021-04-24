@@ -4,7 +4,7 @@
 body{
   background-color:rgb(164, 202, 199);
   color:white;
-  paddint:10px;
+  /* padding:10px; */
 }
 .App{
   display:flex;
@@ -21,6 +21,12 @@ body{
   justify-content:space-between;
   margin-bottom: 10px;
 }
+.app__header > h1 {
+  color:red;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
 .app__stats {
   display:flex;
   flex-direction: row;
@@ -34,8 +40,18 @@ body{
   max-height: 80vh;
 }
 .right__container{
+  display:flex;
+  flex-direction: column;
   padding:10px;
   height: 100%;
+}
+.right__container .MuiCardContent-root {
+  display:flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.graph--content{
+  flex-grow: 0.6;
 }
 .right__container .Line {
   height:100px;
@@ -55,6 +71,10 @@ body{
   border-top-right-radius:10px;
   border-left: solid rgb(189, 16, 16) 4px;
   border-right: solid rgb(189, 16, 16) 4px;
+}
+.app_dropdown{
+  background-color: white !important;
+  border-radius: 15px;
 }
 .world{
   padding: 20px;
@@ -91,5 +111,6 @@ body{
   }
   .app__header h1 {
     font-size: 20px;
+    color: red;
   }
 }

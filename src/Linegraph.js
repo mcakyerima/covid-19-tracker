@@ -70,7 +70,7 @@ const buildChartData = (data , casesType) => {
     return chartData;
 };
 
-function Linegraph( {caseType = "cases"}) {
+function Linegraph({casesType , ...props}) {
     const [data , setData] = useState({});
     console.log(data)   
     useEffect(() => {
@@ -79,7 +79,7 @@ function Linegraph( {caseType = "cases"}) {
                 .then((response) => {
                     return response.json()})
                 .then((data) => {
-                    let chartData = buildChartData(data , 'cases');
+                    let chartData = buildChartData(data , casesType);
                     console.log('this is also it ', data)
                     setData(chartData);
                     // buildChartData(chartData);
@@ -88,10 +88,10 @@ function Linegraph( {caseType = "cases"}) {
         };
 
         fetchData();
-    }, [caseType]);
+    }, [casesType]);
 
     return (
-        <div>
+        <div className={props.className}>
             {data?.length > 0 && (
                 <Line
                 options = {options}
